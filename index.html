@@ -1,0 +1,182 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Goldilocks V4 Index</title>
+        <style>
+            body { font-family: sans-serif; padding: 20px; }
+            table { border-collapse: collapse; width: 100%; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            th { background-color: #f2f2f2; cursor: pointer; }
+            tr:nth-child(even) { background-color: #f9f9f9; }
+            tr:hover { background-color: #f1f1f1; }
+        </style>
+        <script>
+        function sortTable(n) {
+          var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+          table = document.getElementById("indexTable");
+          switching = true;
+          dir = "asc"; 
+          while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+              shouldSwitch = false;
+              x = rows[i].getElementsByTagName("TD")[n];
+              y = rows[i+1].getElementsByTagName("TD")[n];
+              var xVal = isNaN(parseFloat(x.innerHTML)) ? x.innerHTML.toLowerCase() : parseFloat(x.innerHTML);
+              var yVal = isNaN(parseFloat(y.innerHTML)) ? y.innerHTML.toLowerCase() : parseFloat(y.innerHTML);
+              
+              if (dir == "asc") {
+                if (xVal > yVal) { shouldSwitch = true; break; }
+              } else if (dir == "desc") {
+                if (xVal < yVal) { shouldSwitch = true; break; }
+              }
+            }
+            if (shouldSwitch) {
+              rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+              switching = true;
+              switchcount ++;      
+            } else {
+              if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+              }
+            }
+          }
+        }
+        </script>
+    </head>
+    <body>
+        <h1>Goldilocks V4 Index</h1>
+        <p>Comparison of Interactive (Experiment) vs Static 6-View (Control) conditions.</p>
+        <table id="indexTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Rank</th>
+                    <th onclick="sortTable(1)">Variable</th>
+                    <th>Experiment</th>
+                    <th>Control</th>
+                    <th onclick="sortTable(4)">AUC 3D</th>
+                    <th onclick="sortTable(5)">KNN Purity</th>
+                    <th onclick="sortTable(6)">Centroid Dist</th>
+                    <th>Samples (A/B)</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td>1</td>
+            <td>Expanded Disability Status Scale</td>
+            <td><a href="emperor_1_Expanded_Disability_Status_Scale.html">Interactive 3D</a></td>
+            <td><a href="control_2d/1_expanded_disability_status_scale_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.68</td>
+            <td>0.64</td>
+            <td>0.08</td>
+            <td>138 / 57</td>
+        </tr>
+        
+        <tr>
+            <td>2</td>
+            <td>household</td>
+            <td><a href="emperor_2_household.html">Interactive 3D</a></td>
+            <td><a href="control_2d/2_household_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.72</td>
+            <td>0.57</td>
+            <td>0.09</td>
+            <td>75 / 73</td>
+        </tr>
+        
+        <tr>
+            <td>3</td>
+            <td>Expanded Disability Status Scale</td>
+            <td><a href="emperor_3_Expanded_Disability_Status_Scale.html">Interactive 3D</a></td>
+            <td><a href="control_2d/3_expanded_disability_status_scale_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.67</td>
+            <td>0.64</td>
+            <td>0.08</td>
+            <td>138 / 57</td>
+        </tr>
+        
+        <tr>
+            <td>4</td>
+            <td>rxmeds_number</td>
+            <td><a href="emperor_4_rxmeds_number.html">Interactive 3D</a></td>
+            <td><a href="control_2d/4_rxmeds_number_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.69</td>
+            <td>0.57</td>
+            <td>0.09</td>
+            <td>62 / 39</td>
+        </tr>
+        
+        <tr>
+            <td>5</td>
+            <td>household</td>
+            <td><a href="emperor_5_household.html">Interactive 3D</a></td>
+            <td><a href="control_2d/5_household_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.73</td>
+            <td>0.56</td>
+            <td>0.09</td>
+            <td>75 / 73</td>
+        </tr>
+        
+        <tr>
+            <td>6</td>
+            <td>Vitamin D</td>
+            <td><a href="emperor_6_Vitamin_D.html">Interactive 3D</a></td>
+            <td><a href="control_2d/6_vitamin_d_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.67</td>
+            <td>0.71</td>
+            <td>0.09</td>
+            <td>121 / 29</td>
+        </tr>
+        
+        <tr>
+            <td>7</td>
+            <td>Vitamin D</td>
+            <td><a href="emperor_7_Vitamin_D.html">Interactive 3D</a></td>
+            <td><a href="control_2d/7_vitamin_d_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.65</td>
+            <td>0.70</td>
+            <td>0.09</td>
+            <td>121 / 29</td>
+        </tr>
+        
+        <tr>
+            <td>8</td>
+            <td>Different Over the Counter Medications</td>
+            <td><a href="emperor_8_Different_Over_the_Counter_Medications.html">Interactive 3D</a></td>
+            <td><a href="control_2d/8_different_over_the_counter_medications_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.69</td>
+            <td>0.68</td>
+            <td>0.09</td>
+            <td>166 / 51</td>
+        </tr>
+        
+        <tr>
+            <td>9</td>
+            <td>rxmeds_number</td>
+            <td><a href="emperor_9_rxmeds_number.html">Interactive 3D</a></td>
+            <td><a href="control_2d/9_rxmeds_number_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.74</td>
+            <td>0.57</td>
+            <td>0.10</td>
+            <td>62 / 39</td>
+        </tr>
+        
+        <tr>
+            <td>10</td>
+            <td>Different Over the Counter Medications</td>
+            <td><a href="emperor_10_Different_Over_the_Counter_Medications.html">Interactive 3D</a></td>
+            <td><a href="control_2d/10_different_over_the_counter_medications_pcoa/index.html">Static 2D (6-View)</a></td>
+            <td>0.69</td>
+            <td>0.68</td>
+            <td>0.09</td>
+            <td>166 / 51</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    
